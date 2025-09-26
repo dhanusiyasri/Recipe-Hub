@@ -1,0 +1,404 @@
+/* Global Reset and Typography */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Light gray-blue background for cleanliness */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header and Navigation (Modern Blue Theme) */
+header {
+    background-color: #0a4f8a; /* Darker, richer blue */
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s, border-bottom 0.3s;
+    cursor: pointer;
+}
+
+nav a:hover, nav a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}
+
+/* Search Bar (Integrated) */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    width: 250px;
+    font-size: 0.9em;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-bar i {
+    color: white;
+}
+
+/* Main Content Layout */
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #0a4f8a;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Category Filter Bar */
+#filter-bar {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 8px 18px;
+    margin: 0 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #e74c3c; /* Appetizing Red */
+    color: white;
+    border-color: #e74c3c;
+    box-shadow: 0 2px 5px rgba(231, 76, 60, 0.4);
+}
+
+/* Recipe Grid (Listing View) - FLIP STYLES */
+#recipe-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.recipe-card-container {
+    height: 500px; /* INCREASED HEIGHT */
+    cursor: pointer;
+}
+
+.recipe-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+    border-radius: 15px;
+    background-color: white;
+}
+
+/* NEW: Class for flipping the card via JavaScript click */
+.recipe-card.flipped {
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    border-radius: 15px;
+    background-color: white;
+    overflow: hidden;
+}
+
+/* FRONT FACE STYLES */
+.card-face-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+/* Thumbnail Image Integration */
+.recipe-thumbnail {
+    height: 60%;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block; 
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-content {
+    padding: 15px 20px;
+}
+
+.card-content h3 {
+    color: #e74c3c;
+    margin: 0 0 5px;
+    font-size: 1.4em;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-content .description {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.time-label {
+    background-color: #f1c40f;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.8em;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+}
+
+/* BACK FACE STYLES - FIX FOR CUTOFF CONTENT */
+.card-face-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns content from the top */
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(145deg, #ffffff, #f0f4f8);
+    overflow: auto; /* Allows scrolling if content is still too tall */
+}
+
+.card-face-back h4 {
+    color: #0a4f8a;
+    margin-top: 0;
+    font-size: 1.6em;
+    text-align: center;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+    width: 80%;
+}
+
+.back-meta-data {
+    font-size: 1em;
+    list-style-type: none;
+    padding: 20px 0;
+    text-align: left;
+    width: 100%;
+}
+
+.back-meta-data li {
+    background-color: #ecf0f1;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 20px;
+    display: block;
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-link:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+/* Star Rating System */
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 1em;
+    color: #f1c40f;
+    margin-bottom: 10px;
+}
+
+.star-rating .far {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-rating .fas {
+    cursor: pointer;
+}
+
+.detail-rating {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* Recipe Detail View */
+/* ... (Keep remaining detail view styles) ... */
+
+#recipe-detail-view {
+    background-color: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.detail-header {
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.detail-header h1 {
+    color: #0a4f8a;
+    font-size: 2.5em;
+}
+
+.meta-data span {
+    background-color: #f1c40f;
+    padding: 8px 15px;
+    margin-right: 15px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.detail-sections {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.detail-sections h3 {
+    color: #e74c3c;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+.ingredients-list li, .instructions-list li {
+    background-color: #f8fcfd;
+    border-left: 3px solid #0a4f8a;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Cooking Timer */
+.timer-container {
+    background-color: #ecf0f1;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 40px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+#timer-display {
+    font-family: monospace;
+    font-size: 4em;
+    font-weight: 700;
+    color: #0a4f8a;
+    margin-bottom: 15px;
+}
+
+.timer-controls button {
+    border: none;
+    padding: 12px 25px;
+    margin: 0 8px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#start-timer {
+    background-color: #2ecc71;
+    color: white;
+}
+#pause-timer {
+    background-color: #f39c12;
+    color: white;
+}
+#reset-timer {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.timer-controls button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Utility Class */
+.hidden {
+    display: none !important;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+}

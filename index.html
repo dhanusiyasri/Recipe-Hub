@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo">🍳 Recipe Hub</div>
+        <nav>
+            <a href="#" id="recipes-link" class="active">Recipes</a>
+            <a href="#" id="favorites-link">Favorites</a>
+            <a href="#" id="about-link">About</a> 
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search by recipe or ingredient...">
+            <i class="fas fa-search"></i>
+        </div>
+    </header>
+
+    <main>
+        <section id="recipe-list-view">
+            <h2>Popular Recipes of the Week</h2>
+            <div id="filter-bar">
+                <button class="filter-btn active" data-category="All">All</button>
+                <button class="filter-btn" data-category="Veg">Veg</button>
+                <button class="filter-btn" data-category="Non-veg">Non-veg</button>
+                <button class="filter-btn" data-category="Dessert">Dessert</button>
+                <button class="filter-btn" data-category="Snacks">Snacks</button>
+                <button class="filter-btn" data-category="Drinks">Drinks</button>
+            </div>
+            <div id="recipe-list-grid">
+            </div>
+        </section>
+
+        <section id="recipe-detail-view" class="hidden">
+        </section>
+        
+        <section id="about-view" class="hidden">
+        </section> 
+    </main>
+
+    <footer>
+        <p>A simple clone concept of a recipe site.</p>
+        <p>&copy; 2025 Recipe Hub Demo</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
